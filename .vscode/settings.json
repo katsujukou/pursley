@@ -1,0 +1,13 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+
+  "triggerTaskOnSave.tasks": {
+    "cabal-fmt": [
+      "app/**/*.hs",
+      "src/**/*.hs",
+      "test/**/*.hs",
+      "pursley.cabal"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+cabal-version:      2.4
+name:               pursley
+version:            0.1.0.0
+synopsis:
+
+-- A longer description of the package.
+-- description:
+homepage:           https://github.com/katsujukou/pursley.git
+
+-- A URL where users can report bugs.
+-- bug-reports:
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Katsujukou Kineya
+maintainer:         katsujukou@gmail.com
+
+-- A copyright notice.
+-- copyright:
+extra-source-files:
+  CHANGELOG.md
+  README.md
+
+common shared-properties
+  default-language:   Haskell2010
+  build-depends:
+    , aeson
+    , async
+    , base                  ^>=4.16.2.0
+    , bytestring
+    , conduit
+    , conduit-extra
+    , filepath
+    , generic-lens
+    , http-conduit
+    , megaparsec
+    , mtl
+    , optparse-applicative
+    , process
+    , random
+    , rio
+    , safe-exceptions
+    , text
+    , transformers
+    , turtle                ^>=1.6
+
+  ghc-options:
+    -Wall -Wcompat -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wmissing-export-lists -Wpartial-fields
+    -Wredundant-constraints -ferror-spans -fprint-expanded-synonyms
+    -fprint-explicit-foralls -fwarn-tabs
+    -optP-Wno-nonportable-include-path
+
+  default-extensions:
+    NoImplicitPrelude
+    ApplicativeDo
+    BangPatterns
+    BlockArguments
+    ConstrainedClassMethods
+    ConstraintKinds
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveTraversable
+    DerivingVia
+    DuplicateRecordFields
+    EmptyDataDecls
+    ExplicitNamespaces
+    FlexibleContexts
+    FlexibleInstances
+    FunctionalDependencies
+    GeneralizedNewtypeDeriving
+    InstanceSigs
+    KindSignatures
+    LambdaCase
+    LiberalTypeSynonyms
+    MonoLocalBinds
+    MultiParamTypeClasses
+    MultiWayIf
+    NamedFieldPuns
+    NegativeLiterals
+    NumericUnderscores
+    OverloadedStrings
+    PartialTypeSignatures
+    PatternGuards
+    PolyKinds
+    RankNTypes
+    RecordWildCards
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    TypeSynonymInstances
+    OverloadedRecordDot
+
+executable pursley
+  import:         shared-properties
+  main-is:        Pursley.hs
+  hs-source-dirs: app
+  build-depends:  pursley
+  ghc-options:    -threaded -rtsopts -with-rtsopts=-N -main-is Pursley
+  other-modules:  Paths_pursley
+
+-- test-suite pursley-test
+--   import:             shared-properties
+--   type:               exitcode-stdio-1.0
+--   hs-source-dirs:     test
+--   main-is:            Spec.hs
+
+--   -- cabal-fmt: expand test -Spec
+--   build-depends:
+--     , hspec
+--     , pursley
+
+--   build-tool-depends: hspec-discover:hspec-discover -any
+--   ghc-options:        -threaded -rtsopts -with-rtsopts=-N
+
+library
+  import:          shared-properties
+  hs-source-dirs:  src
+
+  -- cabal-fmt: expand src
+  exposed-modules:
+    Control.Applicative.Validation
+    Pursley.ChildProcess
+    Pursley.Command
+    Pursley.Command.Init
+    Pursley.Command.Install
+    Pursley.Command.Setup
+    Pursley.Command.Update
+    Pursley.Config
+    Pursley.Console
+    Pursley.Dependency
+    Pursley.Env
+    Pursley.Error
+    Pursley.Fetch
+    Pursley.FileSystem
+    Pursley.Herb
+    Pursley.Prelude
+    Pursley.Run
+    Pursley.Types
